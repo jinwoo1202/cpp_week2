@@ -1,5 +1,7 @@
 #include <iostream>
 
+int genAnswer();
+
 using namespace std;
 
 int getStrikes(int guess, int answer) {
@@ -30,9 +32,8 @@ int getBalls(int guess, int answer){
 }
 
 void goGame(){
-    int answer;
-    cout << "Enter a answer: ";
-    cin >> answer;
+    int answer = genAnswer();
+    cout << "Answer is " << answer << endl;
 
     while(true){
         int guess;
