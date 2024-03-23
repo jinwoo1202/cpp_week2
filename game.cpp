@@ -1,5 +1,7 @@
 #include <iostream>
 
+int genAnswer();
+
 using namespace std;
 
 int getStrikes(int guess, int answer) {
@@ -31,8 +33,16 @@ int getBalls(int guess, int answer){
 
 void goGame(){
     int answer = genAnswer();
+    int attempts=5;
 
     while(true){
+        if(attempts==0){
+            cout<<"You lose!";
+            break;
+        }
+        else{
+            cout<< attempts << "chances left."<<endl;
+        }
         int guess;
         cout << "Enter a guess: ";
         cin >> guess;
@@ -40,12 +50,12 @@ void goGame(){
         int strikes = getStrikes(guess, answer);
         int balls = getBalls(guess, answer);
 
-        if(strikes == 3){
-            cout<<"You Win!";
+        if(strikes==3){
+            cout<<"You win!";
             break;
         }
-        else{
-            cout << "Strikes: "<<strikes<< ", Balls: "<<balls<< "\n";
-        }
+
+        attempts--;
+        cout << "Strikes: "<<strikes<< ", Balls: "<<balls<< "\n";
     }
 }
